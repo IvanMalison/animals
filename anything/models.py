@@ -22,3 +22,12 @@ class Animal(db.Model):
         primaryjoin='Animal.species_id==Species.id',
         backref='specimens',
     )
+
+    @property
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "species": self.species.name,
+            "species_id": self.species.id
+        }
